@@ -27,6 +27,7 @@
     <p class="muted">This demo uses Stripe Checkout. Add STRIPE_SECRET_KEY to backend/.env and run the demo backend to fully test (see backend/README.md).</p>
   </div>
 
+  <script src="/socket.io/socket.io.js"></script>
   <script>
     document.querySelectorAll('.btn.purchase').forEach(btn=>{
       btn.addEventListener('click', async ()=>{
