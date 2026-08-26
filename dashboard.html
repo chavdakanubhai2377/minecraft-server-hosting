@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PG Host Dashboard</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="fade-in dashboard-page">
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="logo small"> <span class="logo-block">PG</span> Host</div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html">Home</a>
+      <a class="active" href="dashboard.html">Dashboard</a>
+      <a href="panel.html">Server Panel</a>
+      <a href="#">Billing</a>
+      <a href="#">Account</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a class="discord" href="https://discord.gg/gepDqrQft" target="_blank">Support Discord</a>
+    </div>
+  </aside>
+
+  <main class="dashboard-main">
+    <header class="dash-header">
+      <h1>Welcome back, Player!</h1>
+      <div class="quick-stats">
+        <div class="stat-card glass-card">
+          <div class="label">Servers</div>
+          <div class="value">1</div>
+        </div>
+        <div class="stat-card glass-card">
+          <div class="label">Online</div>
+          <div class="value">0</div>
+        </div>
+        <div class="stat-card glass-card">
+          <div class="label">Credits</div>
+          <div class="value">₹0</div>
+        </div>
+      </div>
+    </header>
+
+    <section class="server-overview">
+      <div class="grid">
+        <div class="card glass-card status-card">
+          <h3>Server Status</h3>
+          <div class="status-row">
+            <div class="status-dot offline"></div>
+            <div class="status-text">Offline</div>
+          </div>
+          <div class="usage">
+            <div>RAM <div class="progress"><div class="progress-fill" style="width:12%"></div></div></div>
+            <div>CPU <div class="progress"><div class="progress-fill" style="width:8%"></div></div></div>
+            <div>Disk <div class="progress"><div class="progress-fill" style="width:22%"></div></div></div>
+          </div>
+        </div>
+
+        <div class="card glass-card actions-card">
+          <h3>Quick Actions</h3>
+          <div class="actions">
+            <button class="btn primary">Start Server</button>
+            <button class="btn secondary">Stop Server</button>
+            <button class="btn outline">Restart Server</button>
+            <button class="btn outline">Console</button>
+            <button class="btn outline">Files</button>
+            <button class="btn outline">Backups</button>
+          </div>
+        </div>
+
+        <div class="card glass-card stats-card">
+          <h3>Network</h3>
+          <div class="stat-line">Inbound: <strong>120 KB/s</strong></div>
+          <div class="stat-line">Outbound: <strong>80 KB/s</strong></div>
+          <h4>Recent</h4>
+          <div class="mini-log">
+            <div>Server stopped at 02:12</div>
+            <div>Backup created 1 day ago</div>
+            <div>Plugin 'Essentials' updated</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panels container">
+      <h2>Server Controls</h2>
+      <div class="controls-grid">
+        <div class="panel glass-card">
+          <h4>Console</h4>
+          <textarea readonly class="console">[17:23] Server is offline
+[17:24] Use 'Start Server' to boot your server.
+          </textarea>
+        </div>
+
+        <div class="panel glass-card">
+          <h4>Backups</h4>
+          <ul class="list">
+            <li>backup-2026-08-26.zip <span class="muted">(2 days ago)</span></li>
+            <li>backup-2026-08-20.zip <span class="muted">(8 days ago)</span></li>
+          </ul>
+          <button class="btn">Create Backup</button>
+        </div>
+
+        <div class="panel glass-card">
+          <h4>Files</h4>
+          <ul class="list">
+            <li>server.jar</li>
+            <li>plugins/</li>
+            <li>world/</li>
+          </ul>
+          <button class="btn">Open File Manager</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="dash-footer">© PG Host — <a href="https://discord.gg/gepDqrQft" target="_blank">Support Discord</a></footer>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

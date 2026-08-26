@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PG Host Server Panel</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="fade-in panel-page">
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="logo small"> <span class="logo-block">PG</span> Host</div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a class="active" href="panel.html">Server Panel</a>
+      <a href="#">Files</a>
+      <a href="#">Backups</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <a class="discord" href="https://discord.gg/gepDqrQft" target="_blank">Support Discord</a>
+    </div>
+  </aside>
+
+  <main class="panel-main">
+    <header class="panel-header">
+      <h1>Server Panel — Example Server</h1>
+      <div class="panel-actions">
+        <button class="btn primary">Start</button>
+        <button class="btn outline">Stop</button>
+        <button class="btn outline">Restart</button>
+      </div>
+    </header>
+
+    <section class="panel-grid container">
+      <div class="panel-left">
+        <div class="glass-card console-panel">
+          <h3>Server Console</h3>
+          <div class="console-output" id="consoleOutput">[Console ready] Type commands below.</div>
+          <div class="console-input">
+            <input id="consoleCmd" placeholder="Enter command...">
+            <button class="btn" id="sendCmd">Send</button>
+          </div>
+        </div>
+
+        <div class="glass-card files-panel">
+          <h3>File Manager</h3>
+          <div class="file-list">
+            <div class="file">server.jar</div>
+            <div class="file">plugins/</div>
+            <div class="file">world/</div>
+          </div>
+        </div>
+
+        <div class="glass-card plugin-panel">
+          <h3>Plugin Manager</h3>
+          <div class="list">
+            <div class="li">EssentialsX <button class="btn tiny">Disable</button></div>
+            <div class="li">WorldEdit <button class="btn tiny">Disable</button></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="panel-right">
+        <div class="glass-card usage">
+          <h3>Resource Usage</h3>
+          <div>RAM <div class="progress"><div class="progress-fill" style="width:18%"></div></div></div>
+          <div>CPU <div class="progress"><div class="progress-fill" style="width:12%"></div></div></div>
+          <div>Disk <div class="progress"><div class="progress-fill" style="width:34%"></div></div></div>
+        </div>
+
+        <div class="glass-card players">
+          <h3>Player List</h3>
+          <div class="list muted">No players online</div>
+        </div>
+
+        <div class="glass-card backups">
+          <h3>Backups</h3>
+          <ul class="list">
+            <li>backup-2026-08-26.zip <button class="btn tiny">Restore</button></li>
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="dash-footer">© PG Host — <a href="https://discord.gg/gepDqrQft" target="_blank">Support Discord</a></footer>
+  </main>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
