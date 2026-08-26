@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PG Host — Checkout</title>
+  <link rel="icon" href="/assets/icons/pghost-favicon.svg">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body class="fade-in">
+  <div class="container">
+    <h1>PG Host — Checkout Demo</h1>
+    <p>Select a plan to checkout (demo mode).</p>
+    <div class="plans-grid">
+      <div class="plan glass-card">
+        <h3>Stone</h3>
+        <div class="price">₹39</div>
+        <button class="btn purchase" data-plan="Stone">Buy Stone</button>
+      </div>
+      <div class="plan glass-card">
+        <h3>Iron</h3>
+        <div class="price">₹69</div>
+        <button class="btn purchase" data-plan="Iron">Buy Iron</button>
+      </div>
+    </div>
+    <p class="muted">This demo uses Stripe Checkout. Add STRIPE_SECRET_KEY to backend/.env and run the demo backend to fully test (see backend/README.md).</p>
+  </div>
+
+  <script>
+    document.querySelectorAll('.btn.purchase').forEach(btn=>{
+      btn.addEventListener('click', async ()=>{
+        const plan = btn.dataset.plan;
+        try{
+          const res = await fetch('/create-checkout-session', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ plan })});
+          const data = await res.json();
+          if(data.free){ alert('Free plan selected'); return; }
+          if(data.url){ window.location = data.url; }
+          else alert('Checkout failed: ' + JSON.stringify(data));
+        }catch(err){ alert('Network error'); }
+      })
+    })
+  </script>
+</body>
+</html>
