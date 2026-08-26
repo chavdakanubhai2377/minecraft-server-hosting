@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Eagle Host — Control Panel (Demo)</title>
+  <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">Eagle Host</h1>
+      <nav>
+        <a href="/public/index.html">Home</a>
+        <a href="/demo/index.html">Buy</a>
+        <a href="/public/dashboard.html">Dashboard</a>
+        <a class="discord" href="https://discord.gg/gepDqrQft" target="_blank">Join Discord</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2>Control Panel (Pterodactyl) — Demo</h2>
+    <p class="muted">In production this page would redirect users to their server console in Pterodactyl and provide real controls. For the demo we provide explanatory links and a placeholder button.</p>
+
+    <div class="panel-box">
+      <p><strong>Pterodactyl Panel URL (example):</strong> <code>https://panel.yourdomain.com</code></p>
+      <p>To test real provisioning you must provide:</p>
+      <ul>
+        <li>PTERO_URL — Panel base URL</li>
+        <li>PTERO_API_KEY — Application API key with server/user create permissions</li>
+        <li>Configured eggs and nodes for each plan</li>
+      </ul>
+      <a class="btn" href="#" onclick="alert('This is a demo placeholder. In production this would open the real Pterodactyl server console.');return false">Open Pterodactyl Console (Demo)</a>
+    </div>
+
+  </main>
+
+  <footer class="container footer">
+    <p>© Eagle Host — Demo</p>
+  </footer>
+</body>
+</html>

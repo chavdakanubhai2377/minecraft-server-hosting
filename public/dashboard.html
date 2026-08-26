@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Eagle Host — Dashboard (Demo)</title>
+  <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">Eagle Host</h1>
+      <nav>
+        <a href="/public/index.html">Home</a>
+        <a href="/demo/index.html">Buy</a>
+        <a href="/public/panel.html">Control Panel</a>
+        <a class="discord" href="https://discord.gg/gepDqrQft" target="_blank">Join Discord</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <div id="auth" class="auth">
+      <h2>Demo Sign-in</h2>
+      <p class="muted">Enter an email to simulate a demo login. This is not a real authentication system — it's a client-side demo only.</p>
+      <input id="email" placeholder="you@example.com" />
+      <button id="signin" class="btn">Sign in (Demo)</button>
+    </div>
+
+    <div id="dashboard" style="display:none">
+      <h2>Welcome, <span id="userEmail"></span></h2>
+      <p class="muted">This is a demo dashboard. Control actions are simulated locally.</p>
+
+      <section class="servers">
+        <h3>Your Servers</h3>
+        <div id="serverList"></div>
+      </section>
+
+      <section style="margin-top:18px">
+        <a class="btn" href="https://discord.gg/gepDqrQft" target="_blank">Open Eagle Host Discord</a>
+        <a class="btn ghost" href="/public/panel.html">Open Control Panel (Demo)</a>
+        <button id="logout" class="btn danger">Sign out</button>
+      </section>
+    </div>
+
+  </main>
+
+  <footer class="container footer">
+    <p>© Eagle Host — Demo</p>
+  </footer>
+
+<script>
+  const demoServers = [
+    { id: 'srv-101', name: 'Survival-1', plan: 'DIRT', status: 'stopped' },
+    { id: 'srv-102', name: 'Vanilla-2', plan: 'BASIC', status: 'running' }
+  ];
+
+  const signinBtn = document.getElementById('signin');
+  const authDiv = document.getElementById('auth');
+  const dashboardDiv = document.getElementById('dashboard');
+  const userEmailSpan = document.getElementById('userEmail');
+  const serverList = document.getElementById('serverList');
+  const logoutBtn = document.getElementById('logout');
+
+  function renderServers() {
+    serverList.innerHTML = '';
+    demoServers.forEach(s => {
+      const el = document.createElement('div');
+      el.className = 'server-card';
+      el.innerHTML = `
+        <strong>${s.name}</strong> <span class="muted">(${s.id})</span>
+        <div class="server-meta">Plan: ${s.plan} • Status: <span class="status">${s.status}</span></div>
+        <div style="margin-top:8px">
+          <button class="btn small" data-action="toggle" data-id="${s.id}">${s.status === 'running' ? 'Stop' : 'Start'}</button>
+          <a class="btn small ghost" href="/public/panel.html">Open Console</a>
+        </div>
+      `;
+      serverList.appendChild(el);
+    });
+
+    // bind actions
+    Array.from(document.querySelectorAll('button[data-action="toggle"]')).forEach(btn => {
+      btn.onclick = () => {
+        const id = btn.dataset.id;
+        const srv = demoServers.find(x => x.id === id);
+        srv.status = srv.status === 'running' ? 'stopped' : 'running';
+        renderServers();
+      };
+    });
+  }
+
+  signinBtn.onclick = () => {
+    const emailInput = document.getElementById('email');
+    const email = emailInput.value || 'demo@eaglehost.test';
+    localStorage.setItem('eagle_demo_user', email);
+    showDashboard(email);
+  };
+
+  logoutBtn.onclick = () => {
+    localStorage.removeItem('eagle_demo_user');
+    dashboardDiv.style.display = 'none';
+    authDiv.style.display = '';
+  };
+
+  function showDashboard(email) {
+    authDiv.style.display = 'none';
+    dashboardDiv.style.display = '';
+    userEmailSpan.textContent = email;
+    renderServers();
+  }
+
+  // on load, check demo auth
+  const existing = localStorage.getItem('eagle_demo_user');
+  if (existing) showDashboard(existing);
+</script>
+</body>
+</html>
